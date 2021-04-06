@@ -22,7 +22,7 @@ public class MatchMaker {
 
             int target = connectedGame.maxPlayers - connectedGame.currentPlayers;
             int[] arr = new int[queue.size()];
-            for (int i = 0; i < queue.size(); i++) {
+            for (int i = 0; i < arr.length; i++) {
                 arr[i] = queue.get(i);
             }
             int[] result = match(arr, target);

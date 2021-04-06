@@ -84,23 +84,5 @@ public class SecuredTCPServer implements AutoCloseable {
     }
 
     public static void main(String[] args) throws Exception {
-        CompletableFuture<Void> f = new CompletableFuture<>();
-        new Thread(() -> {
-            try {
-                MatchServer server = new MatchServer(14822);
-                server.start();
-                f.complete(null);
-            } catch (IOException | NoSuchPaddingException | NoSuchAlgorithmException e) {
-                e.printStackTrace();
-            }
-        }).start();
-
-        f.join();
-        for(int i = 0; i < 8; i++) {
-            new Thread(() -> {
-                GameServer client = new GameServer(16);
-                client.start();
-            }).start();
-        }
     }
 }
